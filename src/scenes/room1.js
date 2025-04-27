@@ -20,8 +20,8 @@ export async function room1(
 ) {
   setBackgroundColor(k, "#a2aed5");
 
-  k.camScale(4);
-  k.camPos(170, 100);
+  k.camScale(3);
+  k.camPos(100, 100);
   k.setGravity(1000);
 
   const roomLayers = roomData.layers;
