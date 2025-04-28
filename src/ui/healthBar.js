@@ -5,8 +5,8 @@ function makeHealthBar(k) {
   return k.make([
     k.sprite("healthBar", { frame: 0 }),
     k.fixed(),
-    k.pos(10, 10),
-    k.scale(4),
+    k.pos(50, 10),
+    k.scale(5),
     {
       hpMapping: {
         1: 2,

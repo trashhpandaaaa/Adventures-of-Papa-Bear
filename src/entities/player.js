@@ -8,7 +8,7 @@ export function makePlayer(k) {
     k.sprite("player"),
     k.area({ shape: new k.Rect(k.vec2(0, 18), 12, 12) }),
     k.anchor("center"),
-    k.body({ mass: 100, jumpForce: 320 }),
+    k.body({ mass: 100, jumpForce: 270 }),
     k.doubleJump(state.current().isDoubleJumpUnlocked ? 2 : 1),
     k.opacity(),
     k.health(state.current().playerHp),
@@ -32,13 +32,13 @@ export function makePlayer(k) {
 
         this.controlHandlers.push(
           k.onKeyPress((key) => {
-            if (key === "x") {
+            if (key === "up" || key == "space") {
               if (this.curAnim() !== "jump") this.play("jump");
               this.doubleJump();
             }
 
             if (
-              key === "z" &&
+              (key === "z" || key === "q") &&
               this.curAnim() !== "attack" &&
               this.isGrounded()
             ) {
@@ -66,7 +66,7 @@ export function makePlayer(k) {
 
         this.controlHandlers.push(
           k.onKeyDown((key) => {
-            if (key === "left" && !this.isAttacking) {
+            if ((key === "left" || key === "a") && !this.isAttacking) {
               if (this.curAnim() !== "run" && this.isGrounded()) {
                 this.play("run");
               }
@@ -75,7 +75,7 @@ export function makePlayer(k) {
               return;
             }
 
-            if (key === "right" && !this.isAttacking) {
+            if ((key === "right" || key === "d") && !this.isAttacking) {
               if (this.curAnim() !== "run" && this.isGrounded()) {
                 this.play("run");
               }
